@@ -27,11 +27,12 @@ public class JavBt {
     boolean scanFinished = false;
     String hc05Url
             = "btspp://98D332309FFB:1;authenticate=false;encrypt=false;master=false"; //Replace this with your bluetooth URL
+    /////   ="btspp://bluetooth address without colons:1;authenticate=false;encrypt=false;master=false"
 
     public static void main(String[] args) {
 
         try {
-            new JavBt().reading_from_bluetooth(); //Calling the read data from bluettoth method
+            new JavBt().reading_from_bluetooth(); //Calling the read data from bluetooth method
         } catch (Exception ex) {
             Logger.getLogger(JavBt.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -49,7 +50,7 @@ public class JavBt {
             
             char[] b = new char[200];   //Creating a 16-bit char array to hold string from arduino
 
-            //Making the connection live
+            //Making the bluetooth connection live, this is optional
             while (true) {
                 for (int y = 0; y < is.available(); y++) {
                     int i = is.read();
@@ -64,26 +65,7 @@ public class JavBt {
                         value = val.toString();
                     }
                 }
-//                    Thread.sleep(200);
-               // }
 
-               
-                //Thread.sleep(200);
-
-//            Filter Out Data
-//            Thread.sleep(200);
-//            if(value.substring(0,1).equals("1a") || value.substring(0,1).equals("1b"))  {
-//                System.out.println("Received 1");
-////                    Thread.sleep(200);
-////                continue;
-//
-//            } else if(value.substring(0,1).equals("0a") || value.substring(0,1).equals("0b")){
-//                System.out.println("Received 0");
-////                    Thread.sleep(200);
-////                continue;
-//            } else {
-//                System.out.println("received NO data" +value);
-//            }
             }
              
         } catch (Exception e) {
